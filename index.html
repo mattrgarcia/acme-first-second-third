@@ -1,0 +1,48 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>'Acme First, Second, Third'</h1>
+    <div id='lists'>
+      <div id='first'>
+        <button class='back'><</button>
+         <button class='forward'>></button>
+        <h2>First</h2>
+          <ul class='first'></ul>
+      </div>
+      <div id='second'>
+        <button class='back'><</button>
+         <button class='forward'>></button>
+          <h2>Second</h2>
+          <ul class='second'></ul>
+        </div>
+      <div id='third'>
+        <button class='back'><</button>
+         <button class='forward'>></button>
+          <h2>Third</h2>
+          <ul class='third'></ul>
+        </div>
+    </div>
+    <script>
+      const slots = ['first', 'second', 'third'];
+      const users = [
+        { id: 1, name: 'moe', slot: 'third' },
+        { id: 2, name: 'larry', slot: 'second' },
+        { id: 3, name:'curly', slot: 'third'  },
+        { id: 4, name: 'lucy', slot: 'third', selected: true }
+      ];
+
+
+
+      const render = (slot)=>{
+        const list = document.querySelector(`.${ slot }`);
+        const html = users.filter(user=>user.slot === slot).map(user=>`<li>${ user.name }</li>`).join('');
+        list.innerHTML = html;
+      }
+
+      slots.forEach(slot=>render(slot));
+      render();
+
+    </script>
+  </body>
+</html>
